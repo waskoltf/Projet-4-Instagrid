@@ -7,8 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class HomeController: UIViewController {
+    @IBOutlet weak var titleLabel: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
