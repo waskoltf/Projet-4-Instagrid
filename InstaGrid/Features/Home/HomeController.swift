@@ -8,13 +8,16 @@
 import UIKit
 
 class HomeController: UIViewController {
-    @IBOutlet weak var titleLabel: UIImageView!
+    
+    @IBOutlet var selectedImageViews: [UIImageView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func changeLayoutButtonIsTapped(_ sender: UIButton) {
+        selectedImageViews.forEach { $0.isHidden = true }
+        selectedImageViews[sender.tag].isHidden = false
+    }
 }
 
