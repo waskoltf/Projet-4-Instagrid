@@ -20,4 +20,3 @@ class HomeController: UIViewController {
         selectedImageViews[sender.tag].isHidden = false
     }
 }
-
