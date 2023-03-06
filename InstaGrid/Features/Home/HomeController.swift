@@ -61,7 +61,7 @@ class HomeController: UIViewController {
     
     // TO CHECK: Why swipe doesn't work when we swipe from buttons
     
-    @IBAction func swipeUpToShare(_ sender: UISwipeGestureRecognizer) {        
+    @IBAction func swipeUpToShare(_ sender: UISwipeGestureRecognizer) {
         imageViewsButton.forEach {
             $0.isEnabled = false
         }
@@ -73,9 +73,8 @@ class HomeController: UIViewController {
             if sender.direction == .up {
                 let upView = CGAffineTransform(translationX: 0, y: -(self.centerBlocView.frame.origin.y + self.centerBlocView.bounds.height))
                 let upStackView = CGAffineTransform(translationX: 0, y: -(self.swipeUpToShareStack.frame.origin.y + self.swipeUpToShareStack.bounds.height)*1.7)
-
+                
                 print("commence")
-
                 UIView.animate(withDuration: 0.7, delay: 0, animations: {
                     self.centerBlocView.transform = upView
                     self.swipeUpToShareStack.transform = upStackView
@@ -93,12 +92,17 @@ class HomeController: UIViewController {
                     print("fini")
                 })
             }
-        }else if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        }
+        
+    }
+    
+    @IBAction func swipeLeftToShare(_ sender: UISwipeGestureRecognizer) {
+            if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             sender.direction = .left
             if sender.direction == .left{
                 let leftView = CGAffineTransform(translationX: -(self.centerBlocView.frame.origin.x + self.centerBlocView.bounds.height), y:0)
                 let leftStackView = CGAffineTransform(translationX: -(self.swipeUpToShareStack.frame.origin.x + self.swipeUpToShareStack.bounds.height)*1.7, y: 0)
-
+    
                 UIView.animate(withDuration: 0.7, delay: 0, animations: {
                     self.centerBlocView.transform = leftView
                     self.swipeUpToShareStack.transform = leftStackView
@@ -115,11 +119,11 @@ class HomeController: UIViewController {
                     }
                 })
             }
-
-
+    
+    
         }
-        
     }
+   
     
     
     @IBAction func imageViewButtonIsTapped(_ sender: Any) {
