@@ -20,6 +20,10 @@ class HomeController: UIViewController {
     
     @IBOutlet var constraintsToDisable: [NSLayoutConstraint]!
     
+
+    @IBOutlet weak var swipeUpToShareStack: UIStackView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -57,31 +61,70 @@ class HomeController: UIViewController {
     
     // TO CHECK: Why swipe doesn't work when we swipe from buttons
     
-    @IBAction func swipeUpToShare(_ sender: UISwipeGestureRecognizer) {
-        
-        constraintsToDisable.forEach {
-            $0.isActive = false
+    @IBAction func swipeUpToShare(_ sender: UISwipeGestureRecognizer) {        
+        imageViewsButton.forEach {
+            $0.isEnabled = false
         }
-        
         imageViewsButton.forEach {
             $0.isUserInteractionEnabled = false
         }
-        
-        if sender.direction == .up {
-            UIView.animate(withDuration: 1, delay: 0, animations: {
-                self.centerBlocView.frame.origin.y -= (self.centerBlocView.frame.origin.y + self.centerBlocView.bounds.height)
-            }, completion: { isFinished in
-                if isFinished {
-                    self.imageViewsButton.forEach {
-                        $0.isUserInteractionEnabled = true
+        if UIDevice.current.orientation == .portrait{
+            sender.direction = .up
+            if sender.direction == .up {
+                let upView = CGAffineTransform(translationX: 0, y: -(self.centerBlocView.frame.origin.y + self.centerBlocView.bounds.height))
+                let upStackView = CGAffineTransform(translationX: 0, y: -(self.swipeUpToShareStack.frame.origin.y + self.swipeUpToShareStack.bounds.height)*1.7)
+
+                print("commence")
+
+                UIView.animate(withDuration: 0.7, delay: 0, animations: {
+                    self.centerBlocView.transform = upView
+                    self.swipeUpToShareStack.transform = upStackView
+                }, completion: { finished in
+                    if finished {
+                        self.centerBlocView.transform = CGAffineTransform.identity
+                        self.swipeUpToShareStack.transform = CGAffineTransform.identity
+                        self.imageViewsButton.forEach {
+                            $0.isEnabled = true
+                        }
+                        self.imageViewsButton.forEach {
+                            $0.isUserInteractionEnabled = true
+                        }
                     }
-                }
-            })
+                    print("fini")
+                })
+            }
+        }else if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            sender.direction = .left
+            if sender.direction == .left{
+                let leftView = CGAffineTransform(translationX: -(self.centerBlocView.frame.origin.x + self.centerBlocView.bounds.height), y:0)
+                let leftStackView = CGAffineTransform(translationX: -(self.swipeUpToShareStack.frame.origin.x + self.swipeUpToShareStack.bounds.height)*1.7, y: 0)
+
+                UIView.animate(withDuration: 0.7, delay: 0, animations: {
+                    self.centerBlocView.transform = leftView
+                    self.swipeUpToShareStack.transform = leftStackView
+                }, completion: { finisher in
+                    if finisher {
+                        self.centerBlocView.transform = CGAffineTransform.identity
+                        self.swipeUpToShareStack.transform = CGAffineTransform.identity
+                        self.imageViewsButton.forEach {
+                            $0.isEnabled = true
+                        }
+                        self.imageViewsButton.forEach {
+                            $0.isUserInteractionEnabled = true
+                        }
+                    }
+                })
+            }
+
+
         }
+        
     }
+    
     
     @IBAction func imageViewButtonIsTapped(_ sender: Any) {
         print("buttonIsTapped")
     }
 }
+
 

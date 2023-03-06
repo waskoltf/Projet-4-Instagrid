@@ -409,6 +409,7 @@
                     </view>
                     <connections>
                         <outlet property="centerBlocView" destination="zc2-sA-WWZ" id="C7C-5U-bhH"/>
+                        <outlet property="swipeUpToShareStack" destination="uu5-hL-TGo" id="Btx-Or-cfY"/>
                         <outletCollection property="selectedImageViews" destination="QTv-SH-UVQ" collectionClass="NSMutableArray" id="3Lx-IM-Tm1"/>
                         <outletCollection property="selectedImageViews" destination="WvF-bl-rTq" collectionClass="NSMutableArray" id="PGO-G1-1Lw"/>
                         <outletCollection property="selectedImageViews" destination="kaA-PT-EV8" collectionClass="NSMutableArray" id="dOd-0g-2ns"/>
@@ -420,8 +421,9 @@
                         <outletCollection property="imageViewsButton" destination="dvh-hI-vXg" collectionClass="NSMutableArray" id="Le4-HE-TZZ"/>
                         <outletCollection property="imageViewsButton" destination="eIN-9b-xgt" collectionClass="NSMutableArray" id="yD0-J3-hcP"/>
                         <outletCollection property="imageViewsButton" destination="CSu-gp-Abp" collectionClass="NSMutableArray" id="8Oj-MI-kkG"/>
-                        <outletCollection property="constraintsToDisable" destination="AMj-io-ibe" collectionClass="NSMutableArray" id="PsT-6M-93t"/>
-                        <outletCollection property="constraintsToDisable" destination="Hlm-iP-6aT" collectionClass="NSMutableArray" id="wi5-g4-ocf"/>
+                        <outletCollection property="constraintsToDisable" destination="AMj-io-ibe" collectionClass="NSMutableArray" id="oKl-1Y-das"/>
+                        <outletCollection property="constraintsToDisable" destination="Hlm-iP-6aT" collectionClass="NSMutableArray" id="8g8-nQ-Ahq"/>
+                        <outletCollection property="constraintsToDisable" destination="kJh-Yk-pI7" collectionClass="NSMutableArray" id="I8i-3G-9MC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -431,7 +433,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="370" y="131"/>
+            <point key="canvasLocation" x="-92" y="128"/>
         </scene>
     </scenes>
     <resources>

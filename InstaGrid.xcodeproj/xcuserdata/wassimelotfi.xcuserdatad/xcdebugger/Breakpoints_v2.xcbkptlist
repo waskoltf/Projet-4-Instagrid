@@ -3,4 +3,114 @@
    uuid = "B0605208-3270-4DA7-AA58-8D65586EA347"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstaGrid/Features/Home/HomeController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "HomeController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5 - a8866dd2380b6591"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstaGrid.HomeController.bottomConstraint.getter : Swift.Optional&lt;__C.NSLayoutConstraint&gt;"
+                  moduleName = "InstaGrid"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wassimelotfi/Desktop/InstaGrid/InstaGrid/Features/Home/HomeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5 - 2b4f0df213914d9d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstaGrid.HomeController.bottomConstraint.setter : Swift.Optional&lt;__C.NSLayoutConstraint&gt;"
+                  moduleName = "InstaGrid"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wassimelotfi/Desktop/InstaGrid/InstaGrid/Features/Home/HomeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5 - aaa8a4468a5defec"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstaGrid.HomeController.bottomConstraint.modify : Swift.Optional&lt;__C.NSLayoutConstraint&gt;"
+                  moduleName = "InstaGrid"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wassimelotfi/Desktop/InstaGrid/InstaGrid/Features/Home/HomeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5 - a6b299cfa0113043"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstaGrid.HomeController.bottomConstraint.modify : Swift.Optional&lt;__C.NSLayoutConstraint&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "InstaGrid"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wassimelotfi/Desktop/InstaGrid/InstaGrid/Features/Home/HomeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5 - 5a9dc94ff51a2e0d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstaGrid.HomeController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; InstaGrid.HomeController"
+                  moduleName = "InstaGrid"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wassimelotfi/Desktop/InstaGrid/InstaGrid/Features/Home/HomeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "AC48984D-BE94-4512-A7BC-D2BA57BC75A5 - 706e6addfd9bafc9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "InstaGrid.HomeController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;InstaGrid.HomeController&gt;"
+                  moduleName = "InstaGrid"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wassimelotfi/Desktop/InstaGrid/InstaGrid/Features/Home/HomeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
