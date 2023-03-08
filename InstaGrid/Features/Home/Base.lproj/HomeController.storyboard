@@ -425,6 +425,10 @@
                         <outletCollection property="constraintsToDisable" destination="AMj-io-ibe" collectionClass="NSMutableArray" id="oKl-1Y-das"/>
                         <outletCollection property="constraintsToDisable" destination="Hlm-iP-6aT" collectionClass="NSMutableArray" id="8g8-nQ-Ahq"/>
                         <outletCollection property="constraintsToDisable" destination="kJh-Yk-pI7" collectionClass="NSMutableArray" id="I8i-3G-9MC"/>
+                        <outletCollection property="imageViewCenterBloc" destination="C4D-Qv-nKr" collectionClass="NSMutableArray" id="Kzg-0n-knZ"/>
+                        <outletCollection property="imageViewCenterBloc" destination="7iJ-yv-INo" collectionClass="NSMutableArray" id="nBB-YK-9BB"/>
+                        <outletCollection property="imageViewCenterBloc" destination="Bwl-Fs-fL0" collectionClass="NSMutableArray" id="vwE-ok-A5r"/>
+                        <outletCollection property="imageViewCenterBloc" destination="Qof-cZ-DLR" collectionClass="NSMutableArray" id="a7f-LS-41z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

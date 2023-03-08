@@ -17,10 +17,10 @@ class HomeController: UIViewController {
     @IBOutlet var selectedImageViews: [UIImageView]!
     
     @IBOutlet var imageViewsButton: [UIButton]!
-    
+    @IBOutlet var imageViewCenterBloc: [UIImageView]!
     @IBOutlet var constraintsToDisable: [NSLayoutConstraint]!
     
-
+    
     @IBOutlet weak var swipeUpToShareStack: UIStackView!
     
     
@@ -62,10 +62,9 @@ class HomeController: UIViewController {
     // TO CHECK: Why swipe doesn't work when we swipe from buttons
     
     @IBAction func swipeUpToShare(_ sender: UISwipeGestureRecognizer) {
+        let images = UIImageView()
         imageViewsButton.forEach {
             $0.isEnabled = false
-        }
-        imageViewsButton.forEach {
             $0.isUserInteractionEnabled = false
         }
         if UIDevice.current.orientation == .portrait{
@@ -74,56 +73,72 @@ class HomeController: UIViewController {
                 let upView = CGAffineTransform(translationX: 0, y: -(self.centerBlocView.frame.origin.y + self.centerBlocView.bounds.height))
                 let upStackView = CGAffineTransform(translationX: 0, y: -(self.swipeUpToShareStack.frame.origin.y + self.swipeUpToShareStack.bounds.height)*1.7)
                 
-                print("commence")
                 UIView.animate(withDuration: 0.7, delay: 0, animations: {
                     self.centerBlocView.transform = upView
                     self.swipeUpToShareStack.transform = upStackView
                 }, completion: { finished in
                     if finished {
-                        self.centerBlocView.transform = CGAffineTransform.identity
-                        self.swipeUpToShareStack.transform = CGAffineTransform.identity
-                        self.imageViewsButton.forEach {
-                            $0.isEnabled = true
-                        }
-                        self.imageViewsButton.forEach {
-                            $0.isUserInteractionEnabled = true
+                        let shareSheetVC = UIActivityViewController(activityItems: [images], applicationActivities: nil)
+                        self.present(shareSheetVC, animated: true) {
+                            // Définir le completion handler pour déclencher lorsque l'utilisateur a fini de partager ou de fermer le share sheet
+                            shareSheetVC.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+                                // Vérifier si l'utilisateur a terminé l'action de partage ou a fermé la feuille de partage
+                                if completed || activityType == nil {
+                                    UIView.animate(withDuration: 0.7, animations: {
+                                        self.centerBlocView.transform = CGAffineTransform.identity
+                                        self.swipeUpToShareStack.transform = CGAffineTransform.identity
+                                    }, completion: { finished in
+                                        self.imageViewsButton.forEach {
+                                            $0.isEnabled = true
+                                            $0.isUserInteractionEnabled = true
+                                        }
+                                    })
+                                }
+                            }
                         }
                     }
-                    print("fini")
                 })
             }
         }
-        
     }
     
     @IBAction func swipeLeftToShare(_ sender: UISwipeGestureRecognizer) {
-            if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        let images = UIImageView()
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             sender.direction = .left
             if sender.direction == .left{
                 let leftView = CGAffineTransform(translationX: -(self.centerBlocView.frame.origin.x + self.centerBlocView.bounds.height), y:0)
                 let leftStackView = CGAffineTransform(translationX: -(self.swipeUpToShareStack.frame.origin.x + self.swipeUpToShareStack.bounds.height)*1.7, y: 0)
-    
+                
                 UIView.animate(withDuration: 0.7, delay: 0, animations: {
                     self.centerBlocView.transform = leftView
                     self.swipeUpToShareStack.transform = leftStackView
                 }, completion: { finisher in
                     if finisher {
-                        self.centerBlocView.transform = CGAffineTransform.identity
-                        self.swipeUpToShareStack.transform = CGAffineTransform.identity
-                        self.imageViewsButton.forEach {
-                            $0.isEnabled = true
-                        }
-                        self.imageViewsButton.forEach {
-                            $0.isUserInteractionEnabled = true
+                        let shareSheetVC = UIActivityViewController(activityItems: [images], applicationActivities: nil)
+                        self.present(shareSheetVC, animated: true) {
+                            // Définir le completion handler pour déclencher lorsque l'utilisateur a fini de partager ou de fermer le share sheet
+                            shareSheetVC.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+                                // Vérifier si l'utilisateur a terminé l'action de partage ou a fermé la feuille de partage
+                                if completed || activityType == nil {
+                                    UIView.animate(withDuration: 0.7, animations: {
+                                        self.centerBlocView.transform = CGAffineTransform.identity
+                                        self.swipeUpToShareStack.transform = CGAffineTransform.identity
+                                    }, completion: { finished in
+                                        self.imageViewsButton.forEach {
+                                            $0.isEnabled = true
+                                            $0.isUserInteractionEnabled = true
+                                        }
+                                    })
+                                }
+                            }
                         }
                     }
                 })
             }
-    
-    
         }
     }
-   
+    
     
     
     @IBAction func imageViewButtonIsTapped(_ sender: Any) {
