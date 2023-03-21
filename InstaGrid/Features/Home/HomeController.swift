@@ -8,11 +8,13 @@
 import UIKit
 
 class HomeController: UIViewController {
+    var imageSelectByUser : [UIImage] = []
     
     //MARK: - Outlets
     
     @IBOutlet weak var swipeUpToShareStack: UIStackView!
     
+    @IBOutlet weak var swipeShareLabel: UILabel!
     @IBOutlet weak var centerBlocView: UIView!
     @IBOutlet var centerBlocViews: [UIView]!
     @IBOutlet var centerBlocImageViews: [UIImageView]!
@@ -33,6 +35,14 @@ class HomeController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         updateSwipeGestureDirection()
+        
+        if UIDevice.current.orientation.isPortrait {
+            // mettre à jour le texte pour l'orientation portrait
+            self.swipeShareLabel.text = "Swipe Up to share"
+        } else if UIDevice.current.orientation.isLandscape {
+            // mettre à jour le texte pour l'orientation paysage
+            self.swipeShareLabel.text = "Swipe Left to share"
+        }
     }
     
     // MARK: - IBActions
@@ -55,11 +65,16 @@ class HomeController: UIViewController {
         
         if itsFirstButton {
             centerBlocViews[1].isHidden = true
+            if imageSelectByUser.count == 4 {
+                imageSelectByUser.removeLast()}
         }
         
         if itsSecondButton {
             centerBlocViews[3].isHidden = true
+            if imageSelectByUser.count == 4 {
+                imageSelectByUser.removeLast()}
         }
+        
     }
     
     // MARK: - Swipe up
@@ -87,6 +102,7 @@ class HomeController: UIViewController {
             self.swipeUpToShareStack.transform = upStackView
         }, completion: { finished in
             if !finished { return }
+            // https://www.appsloveworld.com/swift/100/60/why-is-uiactivityviewcontroller-displaying-auto-constraint-errors-in-console
             self.presentActivityController()
         })
     }
@@ -110,12 +126,13 @@ extension HomeController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
         centerBlocImageViews[selectedImageViewIndex].image = image
+        //        imageSelectByUser.append(image!)
+        //        print(imageSelectByUser.count)
         picker.dismiss(animated: true)
     }
 }
 
 // MARK: - Convenience Methods
-
 extension HomeController {
     
     private func updateSwipeGestureDirection() {
@@ -125,7 +142,7 @@ extension HomeController {
     
     private func presentActivityController() {
         let image = getImageFromCenterBlocView()
-        let shareSheetVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let shareSheetVC = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
         
         self.present(shareSheetVC, animated: true) {
             // Définir le completion handler pour déclencher lorsque l'utilisateur a fini de partager ou de fermer le share sheet
@@ -150,8 +167,18 @@ extension HomeController {
         })
     }
     
-    // MARK: - Transformer le bloc CenterBlocView en image
-    private func getImageFromCenterBlocView() -> UIImage {
-        return UIImage(named : "Icon")!
+    private func getImageFromCenterBlocView() -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(size: centerBlocView.bounds.size)
+        let image = renderer.image { context in
+            centerBlocView.drawHierarchy(in: centerBlocView.bounds, afterScreenUpdates: true)
+        }
+        return image
     }
+    
+    //    func changeLabel(){
+    //        if UIDevice.current.orientation.isLandscape {
+    //            swipeShareLabel.text = "swipe left to share"
+    //        }
+    //
+    //    }
 }
